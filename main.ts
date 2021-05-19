@@ -8,6 +8,103 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         Trigun.vy = -150
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Plant, function (sprite, otherSprite) {
+    otherSprite.destroy()
+    flying_enemy = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    animation.runImageAnimation(
+    flying_enemy,
+    [img`
+        f f f . . . . . . . . f f f . . 
+        8 6 6 8 f . . . . . . 8 8 f f . 
+        . 8 6 6 8 f . . . . . . 8 8 f f 
+        . 8 8 8 6 f . . . . . . 8 f 8 f 
+        . 8 8 6 6 8 f . 8 8 . 8 8 f f f 
+        . 8 6 6 8 6 f 8 8 9 8 8 9 8 f f 
+        . 8 6 8 8 6 f 8 6 9 8 6 9 6 f f 
+        . . 8 8 8 6 6 8 6 6 6 6 6 6 8 . 
+        . . . 8 8 8 8 6 6 1 6 6 6 1 8 . 
+        . . . . 8 8 6 6 6 6 6 6 6 6 6 8 
+        . . . . f 6 6 6 6 6 6 6 6 6 6 8 
+        . . . 8 f 6 6 6 6 1 f f f 1 6 f 
+        . . 8 8 f 6 6 6 6 6 6 6 6 6 6 f 
+        . . . . f 8 6 6 6 6 6 6 6 6 f . 
+        . . . . . f 8 6 6 6 6 6 6 f . . 
+        . . . . . . f f f f f f f . . . 
+        `,img`
+        . . . . . . . . . . . f f f . . 
+        f f f . . . . . . . . 8 8 f f f 
+        8 6 6 8 f . . . 8 8 . . 8 8 f f 
+        . 8 6 6 6 f f 8 8 9 8 8 9 8 f f 
+        . 8 8 8 6 6 f 8 6 9 8 6 9 6 f f 
+        . 8 8 6 8 6 f 8 6 6 6 6 6 6 8 . 
+        . 8 6 6 8 6 6 8 6 6 6 6 6 6 8 . 
+        . 8 6 8 8 8 6 6 6 1 6 6 6 1 6 8 
+        . . 8 8 8 8 8 6 6 6 6 6 6 6 6 8 
+        . . . 8 f 6 6 6 6 8 6 6 6 8 6 f 
+        . . 8 8 f 6 6 6 6 1 f f f 1 6 f 
+        . . . . f 8 6 6 6 6 6 6 6 6 f . 
+        . . . . . f 8 6 6 6 6 6 6 f . . 
+        . . . . . . f f f f f f f . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . 8 8 . . 8 8 . . 
+        . . . . . . 8 8 8 9 8 8 9 8 . . 
+        . . . . . 8 8 8 6 9 8 6 9 6 8 . 
+        . . . . f f 6 6 6 6 6 6 6 6 8 . 
+        . . . . f f 6 6 6 6 6 6 6 6 8 8 
+        . . . f f f 8 6 6 1 6 6 6 1 6 8 
+        . . . f f f f 6 6 6 6 6 6 6 6 8 
+        . . . 6 6 6 8 8 6 8 6 6 6 8 6 f 
+        . . . 8 8 8 8 f 6 1 f f f 1 6 f 
+        . . . 8 8 6 6 f 6 6 6 6 6 6 f . 
+        . . . 8 6 6 8 8 6 6 6 6 6 f 8 8 
+        . . 8 6 6 8 8 f f f f f f 8 8 8 
+        . 8 8 8 8 8 . . . . . . 8 8 8 . 
+        8 8 8 8 . . . . . . . 8 8 8 . . 
+        . . . . . . . . . . . . . . . . 
+        `,img`
+        . f f f . . . . . . . . f f f . 
+        . 8 6 6 8 f . . . . . . . 8 f f 
+        . . 8 6 6 8 f . . . . . . 8 8 f 
+        . . 8 8 8 6 f . . . . . . . f 8 
+        . . 8 8 6 6 f f . . . . . f f 8 
+        . . 8 6 6 8 6 f 8 8 . 8 8 f f f 
+        . . 8 6 8 8 6 f 8 8 8 8 8 f f f 
+        . . . 8 8 8 6 8 6 9 8 8 9 8 f . 
+        . . . 8 8 8 8 6 6 9 8 6 9 6 8 . 
+        . . . . 8 8 6 6 6 6 6 6 6 6 8 8 
+        . . . 8 f 6 6 6 6 1 6 6 6 1 6 8 
+        . . 8 8 f 6 6 6 6 6 6 6 6 6 6 f 
+        . . . . f 6 6 6 6 8 6 6 6 8 6 f 
+        . . . . f 8 6 6 6 1 f f f 1 f . 
+        . . . . . f 8 6 6 6 6 6 6 f . . 
+        . . . . . . f f f f f f f . . . 
+        `],
+    200,
+    true
+    )
+    flying_enemy.setPosition(flying_enemy.x + 50, flying_enemy.x - 50)
+    flying_enemy.follow(Trigun, 70)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile16`, function (sprite, location) {
     game.over(false, effects.melt)
 })
@@ -15,13 +112,17 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Portal2-faceleft`, function (
     current_level += 1
     levels()
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Collectable, function (sprite, otherSprite) {
+    info.changeScoreBy(1)
+    otherSprite.destroy()
+})
 function levels () {
     if (current_level == 0) {
-        tiles.setTilemap(tilemap`level2`)
+        tiles.setTilemap(tilemap`level6`)
     } else if (current_level == 1) {
         tiles.setTilemap(tilemap`level1`)
     } else if (current_level == 2) {
-        tiles.setTilemap(tilemap`level4`)
+        tiles.setTilemap(tilemap`level0`)
     } else if (current_level == 3) {
         tiles.setTilemap(tilemap`level3`)
     } else {
@@ -71,47 +172,13 @@ function levels () {
         tiles.setTileAt(value, assets.tile`transparency16`)
     }
     for (let value of tiles.getTilesByType(assets.tile`myTile0`)) {
-        Flower = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.Plant)
+        Flower = sprites.create(assets.tile`Flower`, SpriteKind.Plant)
         tiles.placeOnTile(Flower, value)
         tiles.setTileAt(value, assets.tile`transparency16`)
     }
     for (let value of tiles.getTilesByType(assets.tile`Temp Fire`)) {
-        fire = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.Fireball)
-        tiles.placeOnTile(Flower, value)
+        fire = sprites.create(assets.tile`Fire`, SpriteKind.Fireball)
+        tiles.placeOnTile(fire, value)
         tiles.setTileAt(value, assets.tile`transparency16`)
         animation.runMovementAnimation(
         fire,
@@ -122,12 +189,29 @@ function levels () {
         fire.startEffect(effects.fire)
     }
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Fireball, function (sprite, otherSprite) {
+    info.changeLifeBy(-2)
+    otherSprite.destroy()
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Flame`, function (sprite, location) {
     game.over(false, effects.melt)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`Portal1`, function (sprite, location) {
+    current_level += 1
+    levels()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    otherSprite.destroy()
+    if (Trigun.y < otherSprite.y) {
+        info.changeScoreBy(3)
+    } else {
+        info.changeLifeBy(-1)
+    }
 })
 let fire: Sprite = null
 let Flower: Sprite = null
 let Coin: Sprite = null
+let flying_enemy: Sprite = null
 let Trigun: Sprite = null
 let current_level = 0
 scene.setBackgroundColor(9)
@@ -262,24 +346,7 @@ game.onUpdate(function () {
     if (Trigun.vy < 0) {
         Trigun.setImage(assets.image`MC JUMP`)
     } else if (Trigun.vy > 0) {
-        Trigun.setImage(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `)
+        Trigun.setImage(assets.image`MC CROUCH`)
     } else if (Trigun.x % 2 == 0) {
         Trigun.setImage(assets.image`MC`)
     } else {
