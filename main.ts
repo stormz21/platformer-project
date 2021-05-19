@@ -128,12 +128,12 @@ function levels () {
     } else {
         game.over(true)
     }
+    info.setLife(5)
     tiles.placeOnRandomTile(Trigun, assets.tile`myTile1`)
     for (let value of tiles.getTilesByType(assets.tile`myTile1`)) {
         tiles.setTileAt(value, assets.tile`transparency16`)
         scene.cameraFollowSprite(Trigun)
     }
-    info.setLife(5)
     for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
         value.destroy()
     }
