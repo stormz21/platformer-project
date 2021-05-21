@@ -338,6 +338,10 @@ scene.setBackgroundImage(img`
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
     `)
 current_level = 0
+game.splash("Coins are worth 1 point", "Walk over a plant")
+game.splash("And an enemy spawns dealing 1 damage", "Land on the enemies head")
+game.splash("To gain 2 points", "Head through the portal to enter the next level")
+game.splash("Goodluck!")
 Trigun = sprites.create(assets.image`MC`, SpriteKind.Player)
 controller.moveSprite(Trigun, 80, 0)
 Trigun.setFlag(SpriteFlag.BounceOnWall, false)
