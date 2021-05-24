@@ -563,10 +563,10 @@ function levels () {
         tiles.setTileAt(value, assets.tile`transparency16`)
     }
     if (current_level < 2) {
-        for (let value of tiles.getTilesByType(assets.tile`myTile1`)) {
-            tiles.setTileAt(value, assets.tile`transparency16`)
+        for (let value2 of tiles.getTilesByType(assets.tile`myTile1`)) {
+            tiles.setTileAt(value2, assets.tile`transparency16`)
             flying_enemy = sprites.create(assets.image`EnemyFire`, SpriteKind.Enemy)
-            tiles.placeOnTile(flying_enemy, value)
+            tiles.placeOnTile(flying_enemy, value2)
             animation.runImageAnimation(
             flying_enemy,
             [img`
@@ -644,10 +644,10 @@ function levels () {
             flying_enemy.follow(Trigun, 70)
         }
     } else {
-        for (let value of tiles.getTilesByType(assets.tile`myTile1`)) {
-            tiles.setTileAt(value, assets.tile`transparency16`)
+        for (let value3 of tiles.getTilesByType(assets.tile`myTile1`)) {
+            tiles.setTileAt(value3, assets.tile`transparency16`)
             flying_enemy = sprites.create(assets.image`EnemyIce`, SpriteKind.Enemy)
-            tiles.placeOnTile(flying_enemy, value)
+            tiles.placeOnTile(flying_enemy, value3)
             animation.runImageAnimation(
             flying_enemy,
             [img`
@@ -750,9 +750,6 @@ game.splash("Use Arrow Keys for Movement and Spacebar to Jump ")
 game.splash("Collect Coins", "Avoid enemies")
 game.splash("or land on their head", "for 3 points")
 current_level = 0
-game.splash("Coins are worth 1 point", "Walk over a plant")
-game.splash("And an enemy spawns dealing 1 damage", "Land on the enemies head")
-game.splash("To gain 2 points", "Head through the portal to enter the next level")
 game.splash("Goodluck!")
 Trigun = sprites.create(assets.image`MC`, SpriteKind.Player)
 scene.cameraFollowSprite(Trigun)
