@@ -749,8 +749,10 @@ let current_level = 0
 game.splash("Use Arrow Keys for Movement and Spacebar to Jump ")
 game.splash("Collect Coins", "Avoid enemies")
 game.splash("or land on their head", "for 3 points")
-current_level = 0
+game.splash("Enter the portal at the top", "of level 2")
+game.splash("to continue")
 game.splash("Goodluck!")
+current_level = 0
 Trigun = sprites.create(assets.image`MC`, SpriteKind.Player)
 scene.cameraFollowSprite(Trigun)
 controller.moveSprite(Trigun, 50, 0)
